@@ -18,6 +18,17 @@ namespace HW6Project.Core
         public UserRepository(string fileName = "FileDataStorage.csv") 
         {
             RepositoryFileName = fileName;
+
+            try
+            {
+                CachedUsers = GetAllUsers();
+            }
+            catch (FileNotFoundException)
+            {
+                // Create the file if it doesn't exist.
+                File.Create(fileName).Dispose();
+                CachedUsers = Array.Empty<User>();
+            }
         }
 
         private string FormatCsvUsers()

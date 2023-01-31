@@ -79,11 +79,12 @@ namespace HW6Project.Core.Models
 
         public override string ToString()
         {
-            return $"{UserId}: {Name} ({Phone}) at {CreatedAt}";
+            return $"{UserId}: {Name} ({Phone}) at {CreatedAt} " +
+                $"Birthday: {BirthdayDate}";
         }
 
         public string FormatCsv() =>
-            $"{UserId},{Name}" +
+            $"{UserId},{Name}," +
                 $"{Phone},{BirthdayDate},{CreatedAt}";
 
         public static User ParseFromCsv(string[] csvData) =>

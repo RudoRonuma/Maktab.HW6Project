@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,6 @@ namespace HW6Project.UI
 
         public void StartUI()
         {
-            Repository.CachedUsers = Repository.GetAllUsers();
             while (!ShouldExit)
             {
                 try
@@ -84,8 +84,8 @@ namespace HW6Project.UI
             var userId = InputHelper.GetConsoleInput("User's ID: ", int.Parse);
 
             var user = Repository.GetUser(userId)!;
-            user.Name = InputHelper.GetConsoleInput("Enter user's name [or empty]: ");
-            user.Phone = InputHelper.GetConsoleInput("Enter phone:");
+            user.Name = InputHelper.GetConsoleInput("Enter user's name [or empty]: ", 0);
+            user.Phone = InputHelper.GetConsoleInput("Enter phone:", 0);
             user.BirthdayDate = InputHelper.GetConsoleInput("Enter Birthday date: ", Convert.ToDateTime);
 
             Repository.SaveUsers();
