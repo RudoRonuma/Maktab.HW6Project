@@ -1,5 +1,6 @@
 ﻿using System;
 using HW6Project.Core;
+using HW6Project.UI;
 
 namespace HW6Project
 {
@@ -7,7 +8,7 @@ namespace HW6Project
     {
         static void Main(string[] args)
         {
-            new UserRepository().StartUI();
+            new ConsoleUI().StartUI();
         }
     }
 }
