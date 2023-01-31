@@ -25,6 +25,12 @@ namespace HW6Project.Core.Models
                     return;
                 
                 _userId = value;
+
+                lock (_locker)
+                {
+                    if (value > _lastUserId)
+                        _lastUserId = value;
+                }
             }
         }
         public string Name
